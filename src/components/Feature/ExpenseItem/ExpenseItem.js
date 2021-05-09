@@ -8,6 +8,7 @@ const ExpenseItem = (props) => {
 
     const [title, setTitle] = useState(props.title);
 
+    console.log("ExpenseItem Evaluated by react state");
     // let title = props.title;
 
     const clickHandler = () => {
@@ -15,6 +16,7 @@ const ExpenseItem = (props) => {
         // title = "Updated!";
         console.log(title);
     }
+
     return (
         <Card className="expense-item">
             <ExpenseDate date={props.date} />
