@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import Expenses from './components/Feature/Expenses/Expenses';
 import NewExpense from './components/Feature/NewExpense/NewExpense';
 
@@ -24,22 +24,36 @@ const DUMMY_EXPENSES = [
   },
 ];
 
-const App = () => {
+class App extends Component {
 
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
-
-  const addExpenseHandler = expense => {
-    console.log(expense);
-    setExpenses(prevExpense => {
-      return [expense, ...prevExpense]
-    })
+  constructor() {
+    super();
+    this.state ={
+      expenses:  DUMMY_EXPENSES
+    }
   }
-  return (
-    <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
-    </div>
-  );
+  // const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
+  addExpenseHandler = expense => {
+    // setExpenses(prevExpense => {
+      //   return [expense, ...prevExpense]
+      // })
+      this.setState(prevExpense => {
+      console.log( [expense, ...prevExpense.expenses]);
+        return {expenses: [expense, ...prevExpense.expenses]}
+      })
+  }
+
+  
+  render() {
+    return (
+      <div>
+        <NewExpense onAddExpense={this.addExpenseHandler} />
+        <Expenses items={this.state.expenses} />
+      </div>
+    );
+  }
+  
 }
 
 export default App;
