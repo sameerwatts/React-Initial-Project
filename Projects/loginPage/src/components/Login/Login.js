@@ -11,13 +11,25 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  console.log('outside useEffect');
-useEffect(() => {
-  console.log('useEffect running');
-  setFormIsValid(
-    enteredEmail.includes('@') && enteredPassword.trim().length > 6
-  );
-}, [enteredEmail, enteredPassword]);
+  // useEffect(() => {
+  //   console.log('Example Effect');
+  //   return () => {
+  //     console.log('clean up code');
+  //   }
+  // }, [enteredEmail]);
+
+  function effectHandler() {
+    const isValid = setTimeout(() => {
+      setFormIsValid(
+        enteredEmail.includes('@') && enteredPassword.trim().length > 6
+      );
+    }, 550)
+    return () => {
+      clearTimeout(isValid);
+    }
+    }
+
+useEffect(effectHandler, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
