@@ -1,0 +1,12 @@
+.cardWrapper {
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    width: 90%;
+    height: 300px;
+}
+
+@media only screen and (min-width: 768px) {
+    .cardWrapper {
+        width: 600px;
+    }
+}
