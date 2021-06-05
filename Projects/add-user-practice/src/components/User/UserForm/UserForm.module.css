@@ -1,3 +1,17 @@
-.color {
-    color: red;
+form {
+    padding: 10px 20px 40px;
+}
+
+form label {
+    padding: 30px 0 10px 0;
+}
+
+form label, form input {
+    display: block;
+}
+
+form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 15px;
 }
