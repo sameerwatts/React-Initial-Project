@@ -12,6 +12,5 @@ form label, form input {
 
 form input {
     width: 100%;
-    box-sizing: border-box;
     padding: 8px 15px;
 }
