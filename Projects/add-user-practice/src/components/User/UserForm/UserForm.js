@@ -5,7 +5,13 @@ import classes from "./UserForm.module.css";
 const UserForm = () => {
   return (
     <Card>
-      <h1>Card component</h1>
+      <form>
+        <label htmlFor='name'>UserName</label>
+        <input type="text" name="user" id="name" />
+        <label htmlFor='age'>Age(years)</label>
+        <input type="text" name="age" id="age" />
+        
+      </form>
     </Card>
   );
 };
