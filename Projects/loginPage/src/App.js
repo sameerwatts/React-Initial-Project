@@ -28,16 +28,14 @@ function App() {
   };
 
   return (
-    <AuthContext.Provider value={
-      {isLoggedIn}
-    }>
-    
-        <MainHeader onLogout={logoutHandler} />
-        <main>
-          {!isLoggedIn && <Login onLogin={loginHandler} />}
-          {isLoggedIn && <Home onLogout={logoutHandler} />}
-        </main>
-      
+    <AuthContext.Provider
+      value={{ isLoggedIn, onLogout: logoutHandler, onLogin: loginHandler }}
+    >
+      <MainHeader />
+      <main>
+        {!isLoggedIn && <Login />}
+        {isLoggedIn && <Home />}
+      </main>
     </AuthContext.Provider>
   );
 }
