@@ -5,6 +5,10 @@
   padding: 2rem;
 }
 
+.actions {
+  text-align: center;
+}
+
 .control {
   margin: 1rem 0;
   display: flex;
@@ -12,8 +16,7 @@
   flex-direction: column;
 }
 
-.control label,
-.control input {
+.control label, .control input {
   display: block;
 }
 
@@ -43,14 +46,9 @@
   background: #fbdada;
 }
 
-.actions {
-  text-align: center;
-}
-
 @media (min-width: 768px) {
   .control {
     align-items: center;
     flex-direction: row;
   }
-
 }
