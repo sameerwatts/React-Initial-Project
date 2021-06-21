@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import OrderContext from "../../order-context/OrderContext";
+import CartContext from "../../store/cart-context";
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
 
@@ -19,7 +19,7 @@ const Cart = () => {
     </ul>
   );
 
-  const ctx = useContext(OrderContext);
+  const ctx = useContext(CartContext);
 
   const cartContent = (
     <Modal>

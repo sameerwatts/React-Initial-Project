@@ -1,10 +1,10 @@
 import React, { Fragment, useContext } from "react";
 import classes from "./Modal.module.css";
 import ReactDOM from "react-dom";
-import OrderContext from "../../order-context/OrderContext";
+import CartContext from "../../store/cart-context";
 
 const Backdrop = () => {
-  const ctx = useContext(OrderContext);
+  const ctx = useContext(CartContext);
   return <div onClick={ctx.hideCartHandler} className={classes.backdrop}></div>;
 };
 

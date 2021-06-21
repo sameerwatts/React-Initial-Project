@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import OrderContext from "../../order-context/OrderContext";
+import CartContext from "../../store/cart-context";
 import CartIcon from "./CartIcon";
 import classes from "./HeaderCartButton.module.css";
 
 const HeaderCartButton = () => {
-  const ctx = useContext(OrderContext);
+  const ctx = useContext(CartContext);
   return (
     <button onClick={ctx.showCartHandler} className={classes.button}>
       <span className={classes.icon}>
