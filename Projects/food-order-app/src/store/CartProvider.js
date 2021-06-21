@@ -3,8 +3,25 @@ import CartContext from "./cart-context";
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
+    const existingCartItemIndex = state.items.findIndex(
+      (singleItem) => singleItem.id === action.item.id
+    );
+
+    const existingCartItem = state.items[existingCartItemIndex];
+    let updatedCartItems;
+    if (existingCartItem) {
+      const updatedCartItem = {
+        ...existingCartItem,
+        amount: existingCartItem.amount + action.item.amount,
+      };
+      updatedCartItems = [...state.items];
+      updatedCartItems[existingCartItemIndex] = updatedCartItem;
+    } else {
+      
+      updatedCartItems = state.items.concat(action.item)
+    }
     return {
-      items: state.items.concat(action.item), //state.items.push(action.item)
+      items: updatedCartItems, //state.items.push(action.item)
       totalAmount: state.totalAmount + action.item.price * action.item.amount,
     };
   }
@@ -12,7 +29,10 @@ const cartReducer = (state, action) => {
     const itemsAfterRemoving = state.items.filter(
       (singleItem) => singleItem.id !== action.id
     );
-    return { items: itemsAfterRemoving, totalAmount: state.totalAmount - action.item.price * action.item.amount };
+    return {
+      items: itemsAfterRemoving,
+      totalAmount: state.totalAmount - action.item.price * action.item.amount,
+    };
   }
   return { items: [], totalAmount: 0 };
 };
