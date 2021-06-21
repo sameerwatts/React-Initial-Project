@@ -1,26 +1,20 @@
-import { useState } from "react";
+import { Fragment, useContext } from "react";
 import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
-import OrderContext from "./order-context/OrderContext";
+import CartContext from "./store/cart-context";
 
 function App() {
-  const [showCart, setShowCart] = useState(false);
-
-  const showCartHandler = () => {
-    setShowCart(true);
-  };
-  const hideCartHandler = () => {
-    setShowCart(false);
-  };
+ 
+  const ctx = useContext(CartContext)
   return (
-    <OrderContext.Provider value={{ showCart, showCartHandler, hideCartHandler }}>
-      {showCart && <Cart />}
+    <Fragment>
+      {ctx.showCart && <Cart />}
       <Header />
       <main>
         <Meals />
       </main>
-    </OrderContext.Provider>
+    </Fragment>
   );
 }
 
